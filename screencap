@@ -1,0 +1,4 @@
+#!/bin/bash
+import ~/capture.png
+xclip -selection clipboard -t image/png -i ~/capture.png
+rm ~/capture.png
