@@ -1,0 +1,12 @@
+#!/bin/bash
+
+function set-title() {
+    echo -e "\033]0;$@\007" 
+}
+
+cd ~/.config/openvpn
+
+set-title "MCECS VPN"
+i3-msg "scratchpad show"
+
+sudo openvpn --config cecs.ovpn

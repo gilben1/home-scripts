@@ -1,0 +1,7 @@
+#!/bin/bash
+if ! ps -eo args | grep -q [o]penvpn ; then
+    i3-msg "exec i3-sensible-terminal -e bash -c ~/.bin/scripts/launch_mcecs_vpn"
+    notify-send -t 500 "VPN Starting in Scratchpad"
+else
+    notify-send -t 500 "VPN already running, in Scratchpad"
+fi
