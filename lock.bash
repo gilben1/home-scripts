@@ -7,7 +7,7 @@ icon=$(ls ~/.lock_icons | shuf -n 1)
 # Adds the path to it
 icon="$HOME/.lock_icons/$icon"
 
-[[ -f $icon ]] && convert /tmp/screen.png $icon -gravity center -composite -matte /tmp/screen.png
+[[ -f $icon ]] && convert /tmp/screen.png $icon -gravity center -composite /tmp/screen.png
 
 i3lock -i /tmp/screen.png
 rm /tmp/screen.png
