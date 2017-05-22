@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script by Nick Gilbert
+# Script by Nick Gilbert (nickgilbert2@gmail.com)
 # Use and modify as you will
 
 # Simple script to output the temps of cores 0 and 1 from lmsensors 'sensors' output

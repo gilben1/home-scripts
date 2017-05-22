@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script by Nick Gilbert
+# Script by Nick Gilbert (nickgilbert2@gmail.com)
 # Use and modify as you will
 
 # Restarts the network manager via service

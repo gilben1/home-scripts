@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script by Nick Gilbert
+# Script by Nick Gilbert (nickgilbert2@gmail.com)
 # Use and modify as you will
 
 # Checks for a running instance of openvpn, and either launches the vpn or says that it is running
