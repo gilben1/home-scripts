@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Starts up my tutoring shift, running the needed programs and chrome tabs in specific workspaces
+
 i3-msg workspace 2:SLACK
 i3-msg exec "google-chrome --new-window "pdx-cs.slack.com""
 

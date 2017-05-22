@@ -1,3 +1,9 @@
 #!/bin/bash
+
+# Takes a screencap of an area, and saves to the clipboard
+
+# Call imagemagick import and save to /tmp/capture.png
 import /tmp/capture.png
+# Take that image and save to clipboard
 xclip -selection clipboard -t image/png -i /tmp/capture.png
+rm /tmp/capture.png

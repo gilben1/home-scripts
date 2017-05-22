@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Simple script to output the temps of cores 0 and 1 from lmsensors 'sensors' output
+# For use in py3statuses "external script" module
+
 core_0=$(sensors | grep "Core 0")
 core_1=$(sensors | grep "Core 1")
 

@@ -1,5 +1,7 @@
 #!/bin/bash
+
 # count how many updates we have got
+
 ups=`/usr/lib/update-notifier/apt-check --human-readable | head -1 | awk '{print $1;}'`
 
 # print the results

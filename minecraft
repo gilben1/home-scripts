@@ -1,2 +1,5 @@
 #!/bin/bash
+
+# Launch minecraft, yo
+
 java -jar ~/.minecraft/launcher.jar

@@ -1,12 +1,18 @@
 #!/bin/bash
 
+# Launch the vpn, and rename the window to that
+
 function set-title() {
     echo -e "\033]0;$@\007" 
 }
 
+# go to config location
 cd ~/.config/openvpn
 
+# change title
 set-title "MCECS VPN"
+# go to scratchpad
 i3-msg "scratchpad show"
 
+# run openvpn with the config
 sudo openvpn --config cecs.ovpn

@@ -1,7 +1,13 @@
 #!/bin/bash
+
+# Checks for a running instance of openvpn, and either launches the vpn or says that it is running
+
+# Checks for running open vpn
 if ! ps -eo args | grep -q [o]penvpn ; then
+    # If not found, start a new one in a new terminal window
     i3-msg "exec i3-sensible-terminal -e bash -c ~/.bin/scripts/launch_mcecs_vpn"
     notify-send -t 500 "VPN Starting in Scratchpad"
 else
+    # if found, tell the user it is already running
     notify-send -t 500 "VPN already running, in Scratchpad"
 fi
