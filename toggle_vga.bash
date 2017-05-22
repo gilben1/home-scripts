@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Script by Nick Gilbert
+# Use and modify as you will
+
 # Toggles the vga output to the left of the laptop screen
 
 # If vga not found

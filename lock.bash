@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Script modified by Nick Gilbert
+# Original script found here: https://github.com/savoca/dotfiles/blob/gray/home/.bin/scripts/lock.sh
+# Use and modify as you will
+
 # Locks the screen with a pixellated screenshot of the screen right before lock
 # Adds an optional icon grabbed randomly from the ~/.lock_icons directory
 # Note, all icons look best at 160 x 160 on a 1366 x 768 screen

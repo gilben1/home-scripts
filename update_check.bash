@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Script by Nick Gilbert
+# Use and modify as you will
+
 # count how many updates we have got
 
 ups=`/usr/lib/update-notifier/apt-check --human-readable | head -1 | awk '{print $1;}'`

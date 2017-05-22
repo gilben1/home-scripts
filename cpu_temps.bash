@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Script by Nick Gilbert
+# Use and modify as you will
+
 # Simple script to output the temps of cores 0 and 1 from lmsensors 'sensors' output
 # For use in py3statuses "external script" module
 

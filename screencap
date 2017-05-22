@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Script by Nick Gilbert
+# Use and modify as you will
+
 # Takes a screencap of an area, and saves to the clipboard
 
 # Call imagemagick import and save to /tmp/capture.png

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Script by Nick Gilbert
+# Use and modify as you will
+
 # Launch the vpn, and rename the window to that
 
 function set-title() {
