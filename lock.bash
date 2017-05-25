@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# Script modified by Nick Gilbert
+# Original script found here: https://pastebin.com/ZpYghBkQ
+# Use and modify as you will
+
+# Locks the screen with a pixellated screenshot of the screen right before lock
+# Adds an optional icon grabbed randomly from the ~/.lock_icons directory
+# Note, all icons look best at 160 x 160 on a 1366 x 768 screen
+#   some experimentation may be required to make the icon look good
+
+# Properly applies the image to each screen using xrandr
+
+
 scrot /tmp/screen.png
 convert /tmp/screen.png -scale 10% -scale 1000% /tmp/screen.png
 # Grabs a random icon from the folder ~/.lock_icons
@@ -34,7 +46,5 @@ then
         echo "done"
     done
 fi
-# dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
-# i3lock  -I 10 -d -e -u -n -i /tmp/screen.png
 #i3lock -e -u -n -i /tmp/screen.png
 i3lock -i /tmp/screen.png
