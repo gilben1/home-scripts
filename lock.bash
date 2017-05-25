@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script modified by Nick Gilbert
+# Script modified by Nick Gilbert (nickgilbert2@gmail.com)
 # Original script found here: https://pastebin.com/ZpYghBkQ
 # Use and modify as you will
 
