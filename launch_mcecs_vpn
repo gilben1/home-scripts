@@ -15,7 +15,7 @@ cd ~/.config/openvpn
 # change title
 set-title "MCECS VPN"
 # go to scratchpad
-i3-msg "scratchpad show"
+i3-msg "[title=\"MCECS VPN\"] scratchpad show"
 
 # run openvpn with the config
 sudo openvpn --config cecs.ovpn

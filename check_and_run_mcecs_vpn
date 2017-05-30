@@ -12,5 +12,5 @@ if ! ps -eo args | grep -q [o]penvpn ; then
     notify-send -t 500 "VPN Starting in Scratchpad"
 else
     # if found, tell the user it is already running
-    notify-send -t 500 "VPN already running, in Scratchpad"
+    i3-msg "[title=\"MCECS VPN\"] scratchpad show"
 fi
