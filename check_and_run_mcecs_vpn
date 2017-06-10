@@ -11,6 +11,6 @@ if ! ps -eo args | grep -q [o]penvpn ; then
     i3-msg "exec i3-sensible-terminal -e bash -c ~/.bin/scripts/launch_mcecs_vpn"
     notify-send -t 500 "VPN Starting in Scratchpad"
 else
-    # if found, tell the user it is already running
-    i3-msg "[title=\"MCECS VPN\"] scratchpad show, move position center"
+    # if found, show the scratchpad with the vpn window
+    i3-msg "[title=\"^MCECS VPN$\"] scratchpad show; move position 1px 0px"
 fi
