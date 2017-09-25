@@ -6,11 +6,11 @@ select opt in "${options[@]}"
 do
     case $opt in
         "Tutor Shift")
-            ./shift-tutor
+            ~/.bin/scripts/shift-tutor
             break
             ;;
         "Desk Shift")
-            ./shift-desk
+            ~/.bin/scripts/shift-desk
             break
             ;;
         "No Shift")
