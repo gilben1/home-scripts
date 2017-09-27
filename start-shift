@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Choose from my shifts to run, or exit
+# Script by Nick Gilbert (nickgilbert2@gmail.com)
+# Use and modify as you will
+
 PS3='Choose which shift to begin: '
 options=("Tutor Shift" "Desk Shift" "No Shift")
 select opt in "${options[@]}"
