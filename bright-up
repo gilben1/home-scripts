@@ -2,4 +2,4 @@
 i3-msg exec "xbacklight -inc 10"
 current=$(xbacklight -get)
 current=$( printf "%.0f" $current )
-notify-send -t 100 "Current brightness" "$current"
+#notify-send -t 100 "Current brightness" "$current"
