@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Script by Nick Gilbert (nickgilbert2@gmail.com)
+# Use and modify as you will
+
+# Launch arandr if it's not already running
+
+if ! ps -eo args | grep -q [a]randr ; then
+    i3-msg "exec arandr"
+    notify-send -t 500 "Arandr started in scratchpad"
+else
+    i3-msg "[class=\"Arandr\"] scratchpad show"
+fi
