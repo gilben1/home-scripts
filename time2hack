@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Enter leet hacker mode
+
+i3-msg "exec ~/cool-retro-term/cool-retro-term"
