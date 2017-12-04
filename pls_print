@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# will lpr to each file in each printer directory with passed in options
+
+if [ "$#" -lt 1 ] ; then
+    echo "Error, no user specified, exiting"
+    echo "Arguments: pls_print \$USERNAME \$OPTIONS"
+    exit
+elif [ "$#" -eq 1 ] ; then
+    #echo "User equals $1, printing with no options"
+    user="$1"
+else
+    #echo "User equals $1, printing with options: ${@:2}"
+    user="$1"
+    opts="${@:2}"
+fi
+
+pdir=~/print_queue
+printers=( $(ls $pdir)  )
+count=0
+for i in "${printers[@]}" ; do
+    files=( $(ls $pdir/$i) )
+    if [ "${#files[@]}" -ge 1 ] ; then
+        for j in "${files[@]}" ; do
+            echo "=Job #$count=========================>"
+            echo "Printer: $i"
+            echo "File: $j"
+            echo "User: $user"
+            echo "Options: $opts"
+            echo "=Job #$count=========================>"
+            echo "Print? (y/n)"
+            read resp
+            if [[ "$resp" == "y" ]] ; then
+                CUPS_USER=$user lpr -P $i $pdir/$i/$j $opts
+
+                echo "Remove file from print_queue folder? (y/n)"
+                read rem
+                if [[ "$rem" == "y" ]] ; then
+                    rm $pdir/$i/$j
+                fi
+            else
+                echo "Print aborted"
+            fi
+            let "count+=1"
+        done
+    fi
+done
+if [ $count -eq 0 ] ; then
+    echo "No files printed!"
+fi
