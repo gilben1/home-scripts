@@ -12,7 +12,7 @@ if [[ "$choices" != *"$selection"*  ]] ; then
     notify-send "No wallpaper selected"
 elif [[ "$selection" == "Random" ]] ; then
     notify-send "Random wallpaper has been set as the theme"
-    walgrab
+    ~/.bin/scripts/walgrab
 else
     notify-send "$selection has been set as the theme"
     selection="$HOME/Wallpapers/$selection"
