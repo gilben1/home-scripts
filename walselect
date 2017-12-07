@@ -1,0 +1,21 @@
+#!/bin/bash
+
+choices=$(ls ~/Wallpapers | tr ' ' '\n')
+choices="Random\n$choices"
+
+selection=$(echo -e "$choices" | rofi -dmenu -opacity 90 -width 50 -color-enabled -seperator-style "solid" -font "Source Code Pro 10" -p "Wallpaper:")
+
+#notify-send "$choices"
+#notify-send "$selection"
+
+if [[ "$choices" != *"$selection"*  ]] ; then
+    notify-send "No wallpaper selected"
+elif [[ "$selection" == "Random" ]] ; then
+    notify-send "Random wallpaper has been set as the theme"
+    walgrab
+else
+    notify-send "$selection has been set as the theme"
+    selection="$HOME/Wallpapers/$selection"
+    wal -i "$selection"
+fi
+
