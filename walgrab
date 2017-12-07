@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Grab random wallpaper
+pape=$(~/Wallpapers | shuf -n 1)
+
+# Add path to it
+pape="$HOME/Wallpapers/$pape"
+
+# calling pywal to set to that wallpaper
+wal -i $pape
