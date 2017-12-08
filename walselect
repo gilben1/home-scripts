@@ -13,7 +13,7 @@ if [[ "$choices" != *"$selection"*  ]] ; then
 elif [[ "$selection" == "Random" ]] ; then
     notify-send "Random wallpaper has been set as the theme"
     ~/.bin/scripts/walgrab
-elif [[ "$selection" != "Cancel" ]] ; then
+elif [[ "$selection" != "Cancel" ]] && [[ "$selection" != "" ]] ; then
     selection="$HOME/Wallpapers/$selection"
     wal -i "$selection"
 fi
