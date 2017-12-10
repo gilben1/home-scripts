@@ -1,7 +1,7 @@
 #!/bin/bash
 
 choices=$(ls ~/Wallpapers | tr ' ' '\n')
-choices="Cancel\nRandom\n$choices"
+choices="Random\n$choices"
 
 selection=$(echo -e "$choices" | rofi -dmenu -opacity 90 -width 50 -color-enabled -separator-style "solid" -font "Source Code Pro 10" -p "Wallpaper:")
 
@@ -13,7 +13,7 @@ if [[ "$choices" != *"$selection"*  ]] ; then
 elif [[ "$selection" == "Random" ]] ; then
     notify-send "Random wallpaper has been set as the theme"
     ~/.bin/scripts/walgrab
-elif [[ "$selection" != "Cancel" ]] && [[ "$selection" != "" ]] ; then
+elif [[ "$selection" != "" ]] ; then
     selection="$HOME/Wallpapers/$selection"
     wal -i "$selection"
 fi
