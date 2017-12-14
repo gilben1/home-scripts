@@ -1,9 +1,7 @@
 #!/bin/bash
 
 rofi -i \
-    -run-list-command ". ~/.bin/scripts/alias.sh" \
-    -run-command "/bin/bash -i -c '{cmd}'" \
-    -run-shell-command "urxvt -e /bin/bash -i -c '{cmd}'" \
+    -run-shell-command "urxvt -e /bin/bash -i -c '{cmd}';bash" \
     -modi "drun,run" \
     -show drun \
     -sidebar-mode \
@@ -13,3 +11,5 @@ rofi -i \
     -separator-style "solid" \
     -font "Source Code Pro 10" \
     -no-disable-history
+    #-run-list-command ". ~/.bin/scripts/alias.sh" \
+    #-run-command "/bin/bash -i -c '{cmd}'" \
