@@ -15,6 +15,6 @@ elif [[ "$selection" == "Random" ]] ; then
     ~/.bin/scripts/walgrab
 elif [[ "$selection" != "" ]] ; then
     selection="$HOME/Wallpapers/$selection"
-    wal -i "$selection"
+    wal -i "$selection" -o ~/.bin/scripts/wal-set
 fi
 

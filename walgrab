@@ -7,4 +7,4 @@ pape=$(ls ~/Wallpapers | shuf -n 1)
 pape="$HOME/Wallpapers/$pape"
 
 # calling pywal to set to that wallpaper
-wal -i $pape
+wal -i $pape -o ~/.bin/scripts/wal-set
