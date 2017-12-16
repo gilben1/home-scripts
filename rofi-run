@@ -7,9 +7,10 @@ rofi -i \
     -sidebar-mode \
     -opacity 90 \
     -width 50 \
-    -color-enabled \
     -separator-style "solid" \
     -font "Source Code Pro 10" \
-    -no-disable-history
+    -no-disable-history \
+    -columns 2
     #-run-list-command ". ~/.bin/scripts/alias.sh" \
     #-run-command "/bin/bash -i -c '{cmd}'" \
+    #-color-enabled \

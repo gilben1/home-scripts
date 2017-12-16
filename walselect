@@ -3,7 +3,7 @@
 choices=$(ls ~/Wallpapers | tr ' ' '\n')
 choices="Random\n$choices"
 
-selection=$(echo -e "$choices" | rofi -dmenu -opacity 90 -width 50 -color-enabled -separator-style "solid" -font "Source Code Pro 10" -p "Wallpaper:")
+selection=$(echo -e "$choices" | rofi -dmenu -width 50 -color-enabled -separator-style "solid" -font "Source Code Pro 10" -p "Wallpaper:")
 
 #notify-send "$choices"
 #notify-send "Selection is: $selection"
