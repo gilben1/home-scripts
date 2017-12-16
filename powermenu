@@ -1,0 +1,27 @@
+#!/bin/bash
+
+function confirm()
+{
+    choices="Yes\nNo"
+    selection=$(echo -e "$choices" | rofi -dmenu -p "Are you sure?:")
+    echo "$selection"
+}
+
+choices="Log out\nRestart\nPoweroff"
+selection=$(echo -e "$choices" | rofi -dmenu -p "Power Menu:")
+
+if [[ "$choices" != *"$selection"* ]] ; then
+    notify-send "Invalid entry"
+elif [[ "$selection" == "Log out" ]] ; then
+    if [[ "$(confirm)" == "Yes" ]] ; then
+        i3-msg exit
+    fi
+elif [[ "$selection" == "Restart" ]] ; then
+    if [[ "$(confirm)" == "Yes" ]] ; then
+        reboot
+    fi
+elif [[ "$selection" == "Poweroff" ]] ; then
+    if [[ "$(confirm)" == "Yes" ]] ; then
+        poweroff
+    fi
+fi

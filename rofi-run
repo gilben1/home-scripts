@@ -5,10 +5,6 @@ rofi -i \
     -modi "drun,run" \
     -show drun \
     -sidebar-mode \
-    -opacity 90 \
-    -width 50 \
-    -separator-style "solid" \
-    -font "Source Code Pro 10" \
     -no-disable-history \
     -columns 2
     #-run-list-command ". ~/.bin/scripts/alias.sh" \
