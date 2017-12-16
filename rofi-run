@@ -9,4 +9,3 @@ rofi -i \
     -columns 2
     #-run-list-command ". ~/.bin/scripts/alias.sh" \
     #-run-command "/bin/bash -i -c '{cmd}'" \
-    #-color-enabled \
