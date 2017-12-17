@@ -2,6 +2,9 @@
 
 # Script modified by Nick Gilbert (nickgilbert2@gmail.com)
 # Original script found here: https://pastebin.com/ZpYghBkQ
+
+# Added functionality with i3lock-color found here: https://github.com/pavanjadhaw/betterlockscreen
+
 # Use and modify as you will
 
 # Locks the screen with a pixellated screenshot of the screen right before lock
