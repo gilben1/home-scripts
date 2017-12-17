@@ -10,6 +10,7 @@ choices="Random\n$choices"
 selection=$(echo -e "$choices" | rofi   -dmenu \
                                         -mesg "Set the wallpaper and associated color scheme" \
                                         -i \
+                                        -columns 2 \
                                         -p "Wallpaper:")
 
 if [[ "$choices" != *"$selection"*  ]] ; then
