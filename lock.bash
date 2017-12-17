@@ -49,12 +49,48 @@ then
     done
 fi
 
-i3lock -k \
-    --ringcolor=${color10//#}ff \
-    --ringvercolor=${color10//#}ff \
-    --insidevercolor=${color4//#}ff \
-    --keyhlcolor=${color4//#}ff \
-    --timecolor=${color10//#}ff \
-    --timepos="w/2-cw/2:h/2+20" \
-    --datecolor=${color10//#}ff \
-    -i /tmp/screen.png
+rectangles=" "
+SR=$(xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*')
+for RES in $SR; do
+    SRA=(${RES//[x+]/ })
+    CX=$((${SRA[2]} + 25))
+    CY=$((${SRA[1]} - 30))
+    rectangles+="rectangle $CX,$CY $((CX+300)),$((CY-80)) "
+done
+
+convert /tmp/screen.png -draw "fill black fill-opacity 0.4 $rectangles" /tmp/screen.png
+
+
+letterEnteredColor=${color4//#}ff
+letterRemovedColor=${color5//#}ff
+passwordCorrect=00000000
+passwordIncorrect=d23c3dff
+background=33333311
+foreground=ffffffff
+ringcolor=${color10//#}ff
+i3lock \
+    -i "/tmp/screen.png" \
+    --timepos="x-90:h-ch+30" \
+    --datepos="tx+24:ty+25" \
+    --clock --datestr "Type password to unlock..." \
+    --insidecolor=$background --ringcolor=$ringcolor --line-uses-inside \
+    --keyhlcolor=$letterEnteredColor --bshlcolor=$letterRemovedColor --separatorcolor=$background \
+    --insidevercolor=$passwordCorrect --insidewrongcolor=$background \
+    --ringvercolor=$ringcolor --ringwrongcolor=$passwordIncorrect --indpos="x+280:h-70" \
+    --radius=20 --ring-width=4 --veriftext=":)" --wrongtext="):" \
+    --textcolor="$foreground" --timecolor="$foreground" --datecolor="$foreground"
+
+
+
+
+#i3lock -i /tmp/screen.png
+
+#i3lock -k \
+#    --ringcolor=${color10//#}ff \
+#    --ringvercolor=${color10//#}ff \
+#    --insidevercolor=${color4//#}ff \
+#    --keyhlcolor=${color4//#}ff \
+#    --timecolor=${color10//#}ff \
+#    --timepos="w/2-cw/2:h/2+30" \
+#    --datecolor=${color10//#}ff \
+#    -i /tmp/screen.png
