@@ -3,12 +3,24 @@
 function confirm()
 {
     choices="Yes\nNo"
-    selection=$(echo -e "$choices" | rofi -dmenu -hide-scrollbar true -width 15 -location 5 -lines 2 -p "Are you sure?:")
+    selection=$(echo -e "$choices" | rofi   -dmenu \
+                                            -i \
+                                            -hide-scrollbar true \
+                                            -width 15 \
+                                            -location 5 \
+                                            -lines 2 \
+                                            -p "Are you sure?:")
     echo "$selection"
 }
 
 choices="Log out\nRestart\nPoweroff"
-selection=$(echo -e "$choices" | rofi -dmenu -hide-scrollbar true -width 20 -location 5 -lines 3 -p "Power Menu:")
+selection=$(echo -e "$choices" | rofi   -dmenu \
+                                        -i \
+                                        -hide-scrollbar true \
+                                        -width 20 \
+                                        -location 5 \
+                                        -lines 3 \
+                                        -p "Power Menu:")
 
 if [[ "$choices" != *"$selection"* ]] ; then
     notify-send "Invalid entry"

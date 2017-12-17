@@ -7,7 +7,10 @@
 choices=$(ls ~/Wallpapers | tr ' ' '\n')
 choices="Random\n$choices"
 
-selection=$(echo -e "$choices" | rofi -dmenu -p "Wallpaper:")
+selection=$(echo -e "$choices" | rofi   -dmenu \
+                                        -mesg "Set the wallpaper and associated color scheme" \
+                                        -i \
+                                        -p "Wallpaper:")
 
 if [[ "$choices" != *"$selection"*  ]] ; then
     notify-send "No wallpaper selected"

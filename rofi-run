@@ -1,11 +1,11 @@
 #!/bin/bash
 
-rofi -i \
-    -run-shell-command "urxvt -e /bin/bash -i -c '{cmd}';bash" \
-    -modi "drun,run" \
-    -show drun \
-    -sidebar-mode \
-    -no-disable-history \
-    -columns 2
-    #-run-list-command ". ~/.bin/scripts/alias.sh" \
-    #-run-command "/bin/bash -i -c '{cmd}'" \
+rofi    -i \
+        -run-shell-command "urxvt -e /bin/bash -i -c '{cmd}';bash" \
+        -modi "drun,run" \
+        -show drun \
+        -sidebar-mode \
+        -no-disable-history \
+        -columns 2
+        #-run-list-command ". ~/.bin/scripts/alias.sh" \
+        #-run-command "/bin/bash -i -c '{cmd}'" \
