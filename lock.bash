@@ -11,6 +11,8 @@
 
 # Properly applies the image to each screen using xrandr
 
+source "${HOME}/.cache/wal/colors.sh"
+
 
 scrot /tmp/screen.png
 convert /tmp/screen.png -scale 10% -scale 1000% /tmp/screen.png
@@ -46,5 +48,13 @@ then
         echo "done"
     done
 fi
-#i3lock -e -u -n -i /tmp/screen.png
-i3lock -i /tmp/screen.png
+
+i3lock -k \
+    --ringcolor=${color10//#}ff \
+    --ringvercolor=${color10//#}ff \
+    --insidevercolor=${color4//#}ff \
+    --keyhlcolor=${color4//#}ff \
+    --timecolor=${color10//#}ff \
+    --timepos="w/2-cw/2:h/2+20" \
+    --datecolor=${color10//#}ff \
+    -i /tmp/screen.png
