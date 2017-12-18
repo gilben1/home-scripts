@@ -15,7 +15,7 @@
 # Properly applies the image to each screen using xrandr
 
 if `pgrep 'wal-timed$' > /dev/null` ; then
-    pkill 'wal-timed$'
+    pkill -STOP 'wal-timed$'
     wkill=1
 fi
 
@@ -69,7 +69,6 @@ done
 
 convert /tmp/screen.png -draw "fill black fill-opacity 0.4 $rectangles" /tmp/screen.png
 
-
 letterEnteredColor=${color4//#}ff
 letterRemovedColor=${color5//#}ff
 passwordCorrect=00000000
@@ -77,22 +76,27 @@ passwordIncorrect=d23c3dff
 background=33333311
 foreground=ffffffff
 ringcolor=${color10//#}ff
-i3lock \
-    -i "/tmp/screen.png" \
-    --timepos="x-90:h-ch+30" \
-    --datepos="tx+24:ty+25" \
-    --clock --datestr "Type password to unlock..." \
-    --insidecolor=$background --ringcolor=$ringcolor --line-uses-inside \
-    --keyhlcolor=$letterEnteredColor --bshlcolor=$letterRemovedColor --separatorcolor=$background \
-    --insidevercolor=$passwordCorrect --insidewrongcolor=$background \
-    --ringvercolor=$ringcolor --ringwrongcolor=$passwordIncorrect --indpos="x+280:h-70" \
-    --radius=20 --ring-width=4 --veriftext=":)" --wrongtext="):" \
-    --textcolor="$foreground" --timecolor="$foreground" --datecolor="$foreground"
 
-if ! [ -z "$wkill" ] ; then
-    notify-send "Wal-timed was killed"
-fi
-
+perform_lock()
+{
+    i3lock \
+        -n -i "/tmp/screen.png" \
+        --timepos="x-90:h-ch+30" \
+        --datepos="tx+24:ty+25" \
+        --clock --datestr "Type password to unlock..." \
+        --insidecolor=$background --ringcolor=$ringcolor --line-uses-inside \
+        --keyhlcolor=$letterEnteredColor --bshlcolor=$letterRemovedColor --separatorcolor=$background \
+        --insidevercolor=$passwordCorrect --insidewrongcolor=$background \
+        --ringvercolor=$ringcolor --ringwrongcolor=$passwordIncorrect --indpos="x+280:h-70" \
+        --radius=20 --ring-width=4 --veriftext=":)" --wrongtext="):" \
+        --textcolor="$foreground" --timecolor="$foreground" --datecolor="$foreground"
+    if ! [ -z "$wkill" ] ; then
+        notify-send "Wal-timed was resumed"
+        pkill -CONT 'wal-timed$'
+    fi
+}
+perform_lock &
+sleep 1
 
 #i3lock -i /tmp/screen.png
 
