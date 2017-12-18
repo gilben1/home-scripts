@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# Rofi-using wrapper to take input to pass to wal-timed.
+#
+# If the 'wal-timed' script is already running, will ask to kill
+# to start a new one
+#
+# Asks the user for a directory relative to the user's home directory
+# Populates with a directory called Wallpapers, can be any valid directory relative to home
+#
+# Then asks for a timing in minutes. Auto suggests some, any other whole number in minutes
+# Passes information as arguments to wal-timed
+
+if `ps -aux | pgrep 'wal-timed$' > /dev/null` ; then
+    choices="Yes\nNo"
+    ans=$(echo -e "$choices" | rofi     -dmenu \
+                                        -i \
+                                        -hide-scrollbar true \
+                                        -mesg "wal-timed already running, kill and start a new one?" \
+                                        -p "Answer:")
+    if [[ "$ans" == "Yes" ]] ; then
+        pkill 'wal-timed$'
+    else
+        exit
+    fi
+fi
+
+
+
+
+choices="Wallpapers"
+dir=$(echo -e "$choices" | rofi     -dmenu \
+                                    -i \
+                                    -hide-scrollbar true \
+                                    -mesg "Choose a directory to source from, relative to the homedir" \
+                                    -p "Dir:")
+
+if [ -z "$dir" ] ; then
+    exit
+fi
+
+dir=$HOME/$dir
+
+choices="1 min\n2 min\n5 min\n10 min\n30 min"
+time=$(echo -e "$choices" | rofi    -dmenu \
+                                    -i \
+                                    -hide-scrollbar true \
+                                    -mesg "Choose a timing in minutes. Anything other input will be converted to minutes" \
+                                    -p "Timing for $dir:")
+
+time=${time% *}
+if [[ $time =~ ^[0-9]+$ ]] ; then
+    let "time=time*60"
+else
+    exit
+fi
+
+urxvt -e bash -i -c "~/.bin/scripts/wal-timed $dir $time"

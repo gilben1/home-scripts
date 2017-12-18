@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Takes in a directory and a timing (in seconds) and changes the wallpaper
+# to a random image in that directory every so often
+
+# uses pywal
+
+dir=${1:-~/Wallpapers}
+if ! [ -d "$dir" ] ; then
+    echo "Invalid dir!"
+    exit
+fi
+
+time=${2:-600}
+
+if ! [[ $time =~ ^[0-9]+$ ]] ; then
+    echo "Invalid timing!"
+    exit
+fi
+
+echo -e "\033]0;wal-timed\007" # sets the title to "wal-timed"
+
+x=0
+while true ; do
+    while [ $x -lt $time ] ; do
+        sleep 1
+        let "x+=1"
+        echo "$x out of $time"
+    done
+    x=0
+    wal -i $dir -o ~/.bin/scripts/wal-set
+done
