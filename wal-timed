@@ -25,7 +25,11 @@ while true ; do
     while [ $x -lt $time ] ; do
         sleep 1
         let "x+=1"
-        echo "$x out of $time"
+        #echo "$x out of $time"
+        let "remain=$time-$x"
+        let "secs=$remain % 60"
+        let "remain=$remain / 60"
+        echo "${remain}:${secs} till next wallpaper"
     done
     x=0
     wal -i $dir -o ~/.bin/scripts/wal-set
