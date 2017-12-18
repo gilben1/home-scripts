@@ -1,15 +1,8 @@
 #!/bin/bash
 
 # Wallpaper selector using rofi and pywal
-# Also using my random wallpaper walgrab script
 
-if [ "$#" -ne 1 ] ; then
-    dir=~/Wallpapers
-else
-    dir=$1
-fi
-
-
+dir=${1:-~/Wallpapers}
 
 choices=$(ls -F $dir | grep -v / | tr ' ' '\n')
 choices="Random\n$choices"
@@ -20,11 +13,11 @@ selection=$(echo -e "$choices" | rofi   -dmenu \
                                         -columns 2 \
                                         -p "Wallpaper:")
 if [ -z "$selection" ] ; then
-    notify-send "No wallpaper selected"
+    :
 elif [ -d "$dir/$selection" ] ; then
     ~/.bin/scripts/walselect $dir/$selection
 elif [[ "$choices" != *"$selection"* ]] ; then
-    notify-send "No wallpaper selected"
+    :
 elif [[ "$selection" == "Random" ]] ; then
     notify-send "Random wallpaper has been set as the theme"
     wal -i "$dir" -o ~/.bin/scripts/wal-set
