@@ -10,6 +10,7 @@ clear
 dir=${1:-~/Wallpapers}
 if ! [ -d "$dir" ] ; then
     echo "Invalid dir!"
+    notify-send "Invalid dir!"
     exit
 fi
 
@@ -17,6 +18,7 @@ time=${2:-600}
 
 if ! [[ $time =~ ^[0-9]+$ ]] ; then
     echo "Invalid timing!"
+    notify-send "Invalid time set, must be a full number!"
     exit
 fi
 

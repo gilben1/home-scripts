@@ -91,7 +91,6 @@ perform_lock()
         --radius=20 --ring-width=4 --veriftext=":)" --wrongtext="):" \
         --textcolor="$foreground" --timecolor="$foreground" --datecolor="$foreground"
     if ! [ -z "$wkill" ] ; then
-        notify-send "Wal-timed was resumed"
         pkill -CONT 'wal-timed$'
     fi
 }
