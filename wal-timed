@@ -5,6 +5,8 @@
 
 # uses pywal
 
+clear
+
 dir=${1:-~/Wallpapers}
 if ! [ -d "$dir" ] ; then
     echo "Invalid dir!"
@@ -25,9 +27,9 @@ while true ; do
     while [ $x -lt $time ] ; do
         sleep 1
         let "x+=1"
-        #echo "$x out of $time"
         let "remain=$time-$x"
         let "secs=$remain % 60"
+        secs=$(printf "%02d" $secs)
         let "remain=$remain / 60"
         echo "${remain}:${secs} till next wallpaper"
     done
