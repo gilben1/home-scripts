@@ -14,6 +14,12 @@
 
 # Properly applies the image to each screen using xrandr
 
+if `pgrep 'wal-timed$' > /dev/null` ; then
+    pkill 'wal-timed$'
+    wkill=1
+fi
+
+
 source "${HOME}/.cache/wal/colors.sh"
 
 
@@ -83,7 +89,9 @@ i3lock \
     --radius=20 --ring-width=4 --veriftext=":)" --wrongtext="):" \
     --textcolor="$foreground" --timecolor="$foreground" --datecolor="$foreground"
 
-
+if ! [ -z "$wkill" ] ; then
+    notify-send "Wal-timed was killed"
+fi
 
 
 #i3lock -i /tmp/screen.png
