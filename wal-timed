@@ -39,5 +39,8 @@ while true ; do
         let "x+=1"
     done
     x=0
-    wal -i $dir -o ~/.bin/scripts/wal-set
+    wal -i $dir -o ~/.bin/scripts/wal-set > out.tmp
+    curr=$(head -n 1 out.tmp | rev | cut -d '/' -f 1 | rev)
+    title="$dir, $curr, ${timeformat} min rotation - wal-timed"
+    echo -e "\033]0;$title\007" # sets the title to "wal-timed"
 done
