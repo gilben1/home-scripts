@@ -22,18 +22,21 @@ if ! [[ $time =~ ^[0-9]+$ ]] ; then
     exit
 fi
 
-echo -e "\033]0;wal-timed\007" # sets the title to "wal-timed"
+let "timeformat=$time / 60"
+title="$dir, ${timeformat} min rotation - wal-timed"
+#echo -e "\033]0;wal-timed\007" # sets the title to "wal-timed"
+echo -e "\033]0;$title\007" # sets the title to "wal-timed"
 
 x=0
 while true ; do
     while [ $x -lt $time ] ; do
         sleep 1
-        let "x+=1"
         let "remain=$time-$x"
         let "secs=$remain % 60"
         secs=$(printf "%02d" $secs)
         let "remain=$remain / 60"
         echo "${remain}:${secs} till next wallpaper"
+        let "x+=1"
     done
     x=0
     wal -i $dir -o ~/.bin/scripts/wal-set
