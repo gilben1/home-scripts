@@ -6,6 +6,7 @@ rofi    -i \
         -show drun \
         -sidebar-mode \
         -no-disable-history \
-        -columns 2
+        -columns 2 \
+        -show-icons true
         #-run-list-command ". ~/.bin/scripts/alias.sh" \
         #-run-command "/bin/bash -i -c '{cmd}'" \
