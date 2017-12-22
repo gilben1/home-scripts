@@ -13,7 +13,7 @@ function confirm()
     echo "$selection"
 }
 
-choices="Log out\nRestart\nPoweroff"
+choices="Log out\nReboot\nPoweroff"
 selection=$(echo -e "$choices" | rofi   -dmenu \
                                         -i \
                                         -hide-scrollbar true \
@@ -28,7 +28,7 @@ elif [[ "$selection" == "Log out" ]] ; then
     if [[ "$(confirm)" == "Yes" ]] ; then
         i3-msg exit
     fi
-elif [[ "$selection" == "Restart" ]] ; then
+elif [[ "$selection" == "Reboot" ]] ; then
     if [[ "$(confirm)" == "Yes" ]] ; then
         reboot
     fi
