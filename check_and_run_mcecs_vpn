@@ -6,10 +6,9 @@
 # Checks for a running instance of openvpn, and either launches the vpn or says that it is running
 
 # Checks for running open vpn
-if ! ps -eo args | grep -q [o]penvpn ; then
+if ! pgrep -f 'openvpn' ; then
     # If not found, start a new one in a new terminal window
     i3-msg "exec urxvt -e bash -c ~/.bin/scripts/launch_mcecs_vpn"
-    notify-send -t 500 "VPN Starting in Scratchpad"
 else
     # if found, show the scratchpad with the vpn window
     i3-msg "[title=\"^MCECS VPN$\"] scratchpad show"
