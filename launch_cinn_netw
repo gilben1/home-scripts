@@ -5,4 +5,4 @@ if ! pgrep -f 'cinnamon-settings network$' ; then
     i3-msg "exec --no-startup-id "cinnamon-settings network""
     sleep 1
 fi
-i3-msg "[title=\"^Network$\"] [class=\"Cinnamon-settings.py\"] scratchpad show"
+i3-msg "[title=\"^Network$\" class=\"Cinnamon-settings.py\"] scratchpad show"

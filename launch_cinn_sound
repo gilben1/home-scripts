@@ -1,0 +1,8 @@
+#!/bin/bash
+# Check to see if network settings is running, and show if it is
+
+if ! pgrep -f 'cinnamon-settings sound$' ; then
+    i3-msg "exec --no-startup-id "cinnamon-settings sound""
+    sleep 1
+fi
+i3-msg "[title=\"^Sound$\" class=\"Cinnamon-settings.py\"] scratchpad show"
