@@ -5,7 +5,6 @@
 
 # Launch arandr if it's not already running
 
-#if ! ps -eo args | grep -q [a]randr ; then
 if ! pgrep 'arandr' ; then
     i3-msg "exec arandr"
 else
