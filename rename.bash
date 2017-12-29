@@ -7,7 +7,9 @@
 #
 WSNUMBER=$(ruby -rjson -e 'puts(JSON.parse(`i3-msg -t get_workspaces`).find { |ws| ws["focused"] }["num"])')
 NEWNAME="`zenity --entry --text 'Rename workspace to: '`"
-if [[ ! "${NEWNAME}" =~ ^[0-9]+: ]] ; then
+if [ -z "${NEWNAME}" ] ; then
+    NEWNAME="${WSNUMBER}"
+elif [[ ! "${NEWNAME}" =~ ^[0-9]+: ]] ; then
     NEWNAME="${WSNUMBER}:${NEWNAME}"
 fi
     i3-msg "rename workspace to \"${NEWNAME}\""
