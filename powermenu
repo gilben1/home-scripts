@@ -13,17 +13,25 @@ function confirm()
     echo "$selection"
 }
 
-choices="Log out\nReboot\nPoweroff"
+choices="Lock\nSuspend\nLog out\nReboot\nPoweroff"
 selection=$(echo -e "$choices" | rofi   -dmenu \
                                         -i \
                                         -hide-scrollbar true \
                                         -width 20 \
                                         -location 5 \
-                                        -lines 3 \
+                                        -lines 5 \
                                         -p "Power Menu:")
 
 if [[ "$choices" != *"$selection"* ]] ; then
     notify-send "Invalid entry"
+elif [[ "$selection" == "Lock" ]] ; then
+    if [[ "$(confirm)" == "Yes" ]] ; then
+        ~/.bin/scripts/lock.bash
+    fi
+elif [[ "$selection" == "Suspend" ]] ; then
+    if [[ "$(confirm)" == "Yes" ]] ; then
+        systemctl suspend
+    fi
 elif [[ "$selection" == "Log out" ]] ; then
     if [[ "$(confirm)" == "Yes" ]] ; then
         i3-msg exit
