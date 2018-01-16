@@ -1,6 +1,8 @@
 #!/bin/bash
 
 rofi    -i \
+        -run-list-command ". ~/.bin/scripts/alias.sh" \
+        -run-command "/bin/bash -i -c '{cmd}'" \
         -run-shell-command "urxvt -e /bin/bash -i -c '{cmd}'" \
         -modi "drun,run" \
         -show drun \
@@ -8,5 +10,3 @@ rofi    -i \
         -no-disable-history \
         -columns 2 \
         -show-icons true
-        #-run-list-command ". ~/.bin/scripts/alias.sh" \
-        #-run-command "/bin/bash -i -c '{cmd}'" \
