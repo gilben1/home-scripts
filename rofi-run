@@ -3,7 +3,7 @@
 rofi    -i \
         -run-list-command ". ~/.bin/scripts/alias.sh" \
         -run-command "/bin/bash -i -c '{cmd}'" \
-        -run-shell-command "urxvt -e /bin/bash -i -c '{cmd}'" \
+        -run-shell-command "urxvt -e /bin/bash -i -c 'cat ~/.cache/wal/sequences;{cmd}'" \
         -modi "drun,run" \
         -show drun \
         -sidebar-mode \
