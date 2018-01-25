@@ -2,8 +2,8 @@
 # Check to see if htop is running, and show if it is
 
 if ! pgrep -f 'htop' ; then
-    i3-msg "exec --no-startup-id urxvt -t htop -e "htop""
+    i3-msg "exec --no-startup-id urxvt -title "Perma-Htop" -e "htop""
     sleep 1
 fi
-i3-msg "[title=\"^[hH]top$\"] scratchpad show"
+i3-msg "[title=\"^Perma-Htop$\"] scratchpad show"
 
