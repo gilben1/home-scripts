@@ -6,22 +6,22 @@
 # Starts up my tutoring shift, running the needed programs and chrome tabs in specific workspaces
 
 i3-msg workspace 2:SLACK
-i3-msg exec "env GTK_THEME=Numix firefox --new-window "pdx-cs.slack.com""
+i3-msg exec "env GTK_THEME=Adwaita firefox --new-window "pdx-cs.slack.com""
 
 sleep 1
 
 i3-msg workspace 3:CRACK
-i3-msg exec "env GTK_THEME=Numix firefox --new-window "accounts.cat.pdx.edu""
+i3-msg exec "env GTK_THEME=Adwaita firefox --new-window "accounts.cat.pdx.edu""
 
 sleep 1
 
 i3-msg workspace 4:SCHEDULE
-i3-msg exec "env GTK_THEME=Numix firefox --new-window "https://calendar.google.com/calendar/render#main_7%7Cday""
+i3-msg exec "env GTK_THEME=Adwaita firefox --new-window "https://calendar.google.com/calendar/render#main_7%7Cday""
 
 sleep 1
 
 i3-msg workspace 5:BANWEB
-i3-msg exec "env GTK_THEME=Numix firefox --new-window "banweb.pdx.edu""
+i3-msg exec "env GTK_THEME=Adwaita firefox --new-window "banweb.pdx.edu""
 
 sleep 1
 i3-msg exec "~/.bin/scripts/check_and_run_mcecs_vpn"
