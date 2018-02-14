@@ -8,6 +8,10 @@
 # Checks for running open vpn
 if ! pgrep -f 'openvpn' ; then
     # If not found, start a new one in a new terminal window
+
+    # unmount the sshfs filesystem if they are mounted
+    ~/.bin/scripts/umount_sshfs
+
     i3-msg "exec urxvt -e bash -c ~/.bin/scripts/launch_mcecs_vpn"
 else
     # if found, show the scratchpad with the vpn window

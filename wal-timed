@@ -7,6 +7,8 @@
 
 clear
 
+out=~/.bin/scripts/.out.tmp
+
 dir=${1:-~/Wallpapers}
 if ! [ -d "$dir" ] ; then
     echo "Invalid dir!"
@@ -39,8 +41,8 @@ while true ; do
         let "x+=1"
     done
     x=0
-    wal -i $dir -o ~/.bin/scripts/wal-set > out.tmp
-    curr=$(head -n 1 out.tmp | rev | cut -d '/' -f 1 | rev)
+    wal -i $dir -o ~/.bin/scripts/wal-set > $out
+    curr=$(head -n 1 $out | rev | cut -d '/' -f 1 | rev)
     title="$dir, $curr, ${timeformat} min rotation - wal-timed"
     echo -e "\033]0;$title\007" # sets the title to "wal-timed"
 done
