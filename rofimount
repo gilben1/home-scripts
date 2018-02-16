@@ -18,6 +18,7 @@ for i in ${output[@]} ; do
         choices="$choices\n$(checkmount $i) $i"
     fi
 done
+
 selection=$(echo -e "$choices" | rofi   -dmenu \
                                         -i \
                                         -hide-scrollbar true \
@@ -26,9 +27,17 @@ mounted=$(echo "$selection" | cut -d ' ' -f 1)
 selection=$(echo "$selection" | cut -d ' ' -f 2)
 
 if [[ "$mounted" == "Mounted" ]] ; then
-    umount "$selection"
-    notify-send "$selection has been unmounted"
+    if [[ "$selection" == *"google-drive"* ]] ; then
+        notify-send "don't try that :P"
+    else
+        umount "$selection"
+        notify-send "$selection has been unmounted"
+    fi
 elif [[ "$mounted" == "Unmounted" ]] ; then
-    mount "$selection"
-    notify-send "$selection has been mounted"
+    if [[ "$selection" == *"google-drive"* ]] ; then
+        notify-send "don't try that :P"
+    else
+        mount "$selection"
+        notify-send "$selection has been mounted"
+    fi
 fi
