@@ -21,8 +21,10 @@ elif [[ "$choices" != *"$selection"* ]] ; then
 elif [[ "$selection" == "Random" ]] ; then
     notify-send "Random wallpaper has been set as the theme"
     wal -i "$dir" -o ~/.bin/scripts/wal-set
+    ~/.config/polybar/launch.sh
 elif [[ "$selection" != "" ]] ; then
     selection="$dir/$selection"
     wal -i "$selection" -o ~/.bin/scripts/wal-set
+    ~/.config/polybar/launch.sh
 fi
 
