@@ -9,7 +9,7 @@ function confirm()
                                             -width 15 \
                                             -location 5 \
                                             -lines 2 \
-                                            -p "Are you sure?:")
+                                            -p "Are you sure?")
     echo "$selection"
 }
 
@@ -20,7 +20,7 @@ selection=$(echo -e "$choices" | rofi   -dmenu \
                                         -width 20 \
                                         -location 5 \
                                         -lines 5 \
-                                        -p "Power Menu:")
+                                        -p "Power Menu")
 
 if [[ "$choices" != *"$selection"* ]] ; then
     notify-send "Invalid entry"

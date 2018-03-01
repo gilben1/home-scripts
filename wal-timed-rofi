@@ -17,7 +17,7 @@ if `ps -aux | pgrep 'wal-timed$' > /dev/null` ; then
                                         -i \
                                         -hide-scrollbar true \
                                         -mesg "wal-timed already running, kill and start a new one?" \
-                                        -p "Answer:")
+                                        -p "Answer")
     if [[ "$ans" == "Yes" ]] ; then
         pkill 'wal-timed$'
     else
@@ -33,7 +33,7 @@ dir=$(echo -e "$choices" | rofi     -dmenu \
                                     -i \
                                     -hide-scrollbar true \
                                     -mesg "Choose a directory to source from, relative to the homedir" \
-                                    -p "Dir:")
+                                    -p "Dir")
 
 if [ -z "$dir" ] ; then
     exit
@@ -46,7 +46,7 @@ time=$(echo -e "$choices" | rofi    -dmenu \
                                     -i \
                                     -hide-scrollbar true \
                                     -mesg "Choose a timing in minutes. Anything other input will be converted to minutes" \
-                                    -p "Timing for $dir:")
+                                    -p "Timing for $dir")
 
 time=${time% *}
 if [[ $time =~ ^[0-9]+$ ]] ; then

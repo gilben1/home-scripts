@@ -8,7 +8,11 @@
 WSNUMBER=$(ruby -rjson -e 'puts(JSON.parse(`i3-msg -t get_workspaces`).find { |ws| ws["focused"] }["num"])')
 NEWNAME=$(echo | rofi   -dmenu \
                         -i \
-                        -p "Workspace Name: ")
+                        -hide-scrollbar true \
+                        -width 35 \
+                        -location 7 \
+                        -lines 0 \
+                        -p "Workspace Name")
 if [ -z "${NEWNAME}" ] ; then
     NEWNAME="${WSNUMBER}"
 elif [[ ! "${NEWNAME}" =~ ^[0-9]+: ]] ; then

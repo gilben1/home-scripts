@@ -11,7 +11,7 @@ selection=$(echo -e "$choices" | rofi   -dmenu \
                                         -mesg "Set the wallpaper and associated color scheme" \
                                         -i \
                                         -columns 2 \
-                                        -p "Wallpaper:")
+                                        -p "Wallpaper")
 if [ -z "$selection" ] ; then
     :
 elif [ -d "$dir/$selection" ] ; then
