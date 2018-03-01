@@ -1,0 +1,30 @@
+#!/bin/bash
+
+if [ -f /tmp/coords.tmp ] ; then
+    RET="true"
+    echo "true"
+else
+    mousecoords=( $(xdotool getmouselocation | grep -o "x:[0-9]* y:[0-9]*" | grep -o "[0-9]*"))
+    echo "${mousecoords[0]} ${mousecoords[1]}" > /tmp/coords.tmp
+fi
+
+while getopts ":tb" opt; do
+    case ${opt} in
+        t ) BAR="top"
+            ;;
+        b ) BAR="bottom"
+            ;;
+        \? ) echo "Usage: cmd [-t] [-b]"
+            ;;
+    esac
+done
+
+if [[ "$RET" == "true" ]] ; then
+    readarray coords < /tmp/coords.tmp
+    xdotool mousemove --sync ${coords[0]} ${coords[1]}
+    rm /tmp/coords.tmp
+elif [[ "$BAR" == "top" ]] ; then
+    xdotool mousemove --sync 0 0
+elif [[ "$BAR" == "bottom" ]] ; then
+    xdotool mousemove --sync 0 1000
+fi
