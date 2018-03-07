@@ -12,7 +12,7 @@ NEWNAME=$(echo | rofi   -dmenu \
                         -width 35 \
                         -location 7 \
                         -lines 0 \
-                        -p "Workspace Name")
+                        -p "Workspace Name for (${WSNUMBER})")
 if [ -z "${NEWNAME}" ] ; then
     NEWNAME="${WSNUMBER}"
 elif [[ ! "${NEWNAME}" =~ ^[0-9]+: ]] ; then
