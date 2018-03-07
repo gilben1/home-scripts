@@ -2,7 +2,7 @@
 
 # Swaps between an autohiding polybar setup and a static inline one
 
-while getopts ":tb" opt; do
+while getopts ":tbsd" opt; do
     case ${opt} in
         t ) dyn="$HOME/.config/polybar/dyntop.var"
             static="$HOME/.config/polybar/statictop.var"
@@ -12,19 +12,33 @@ while getopts ":tb" opt; do
             static="$HOME/.config/polybar/staticbot.var"
             echo "Changing bottom"
             ;;
+        s ) STATIC="true"
+            ;;
+        d ) DYNAMIC="true"
+            ;;
         \? ) echo "Usage: cmd [-t] [-b]"
             ;;
     esac
 done
 
-echo "$dyn"
-echo "$static"
-
-
-if [ -f $dyn ] ; then
-    mv $dyn $static
+if [ ! -z "$STATIC" ] ; then
+    rm "$HOME/.config/polybar/dyntop.var"
+    rm "$HOME/.config/polybar/dynbot.var"
+    touch "$HOME/.config/polybar/statictop.var"
+    touch "$HOME/.config/polybar/staticbot.var"
+elif [ ! -z "$DYNAMIC" ] ; then
+    rm "$HOME/.config/polybar/statictop.var"
+    rm "$HOME/.config/polybar/staticbot.var"
+    touch "$HOME/.config/polybar/dyntop.var"
+    touch "$HOME/.config/polybar/dynbot.var"
+elif [ -f $dyn ] ; then
+    #mv $dyn $static
+    rm $dyn
+    touch $static
     echo "1"
 else
-    mv $static $dyn
+    #mv $static $dyn
+    rm $static
+    touch $dyn
     echo "2"
 fi

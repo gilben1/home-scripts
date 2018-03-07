@@ -14,11 +14,11 @@ elif [ -f ~/.config/polybar/staticbot.var ] ; then
     bot="Static bottom -> Dynamic bottom"
 fi
 
-choices="${top}\n${bot}\n${top} + ${bot}\n"
+choices="${top}\n${bot}\n${top} + ${bot} (Toggle Current)\nBoth Dynamic\nBoth Static\n"
 selection=$(echo -e "$choices" | rofi   -dmenu \
                                         -i \
                                         -hide-scrollbar true \
-                                        -lines 3 \
+                                        -lines 5 \
                                         -p "Choose bar")
 echo "$selection"
 
@@ -28,9 +28,15 @@ if [[ "$selection" == "$top" ]] ; then
 elif [[ "$selection" == "$bot" ]] ; then
     ~/.bin/scripts/polyswap -b
     i3-msg restart
-elif [[ "$selection" == "$top + $bot" ]] ; then
+elif [[ "$selection" == "$top + $bot (Toggle Current)" ]] ; then
     ~/.bin/scripts/polyswap -t
     ~/.bin/scripts/polyswap -b
+    i3-msg restart
+elif [[ "$selection" == "Both Dynamic" ]] ; then
+    ~/.bin/scripts/polyswap -d
+    i3-msg restart
+elif [[ "$selection" == "Both Static" ]] ; then
+    ~/.bin/scripts/polyswap -s
     i3-msg restart
 fi
 
