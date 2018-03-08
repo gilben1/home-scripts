@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# A script the checks the additional mounts in /etc/fstab and outputs
+# whether they are currently mounted.
+#
+# Selecting those mounts will attempt to toggle the mount
+
+# Uses rofi to select the mounts
+
+
 function checkmount()
 {
     if $(findmnt | grep $1 > /dev/null); then
@@ -22,7 +30,8 @@ done
 selection=$(echo -e "$choices" | rofi   -dmenu \
                                         -i \
                                         -hide-scrollbar true \
-                                        -p "Network Mounts:")
+                                        -p "Network Mounts")
+
 mounted=$(echo "$selection" | cut -d ' ' -f 1)
 selection=$(echo "$selection" | cut -d ' ' -f 2)
 
