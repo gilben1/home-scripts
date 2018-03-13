@@ -26,7 +26,9 @@ if [ -z "${NEWNAME}" ]; then
     # i3 tries to interpret words as the workspace
 # 4:4:term
     # i3 just doesn't like multiple colons
-elif [[ "${NEWNAME}" =~ [a-zA-Z]+[0-9]*: || "${NEWNAME}" =~ .*:.*:.* ]] ; then 
+# :name
+    # i3 needs something before the colon
+elif [[ "${NEWNAME}" =~ [a-zA-Z]+[0-9]*: || "${NEWNAME}" =~ .*:.*:.* || "${NEWNAME} =~ ^:.* ]] ; then
     NEWNAME="${OLDNAME}"
 elif [[ ! "${NEWNAME}" =~ ^[0-9]+: ]] ; then
     NEWNAME="${WSNUMBER}:${NEWNAME}"
