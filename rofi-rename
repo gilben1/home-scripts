@@ -17,7 +17,6 @@ NEWNAME=$(echo | rofi   -dmenu \
                         -lines 0 \
                         -p "Workspace Name for (${OLDNAME})")
 
-
 # Empty selection, set as oldname
 if [ -z "${NEWNAME}" ]; then
     NEWNAME="${OLDNAME}"
@@ -28,9 +27,9 @@ if [ -z "${NEWNAME}" ]; then
     # i3 just doesn't like multiple colons
 # :name
     # i3 needs something before the colon
-elif [[ "${NEWNAME}" =~ [a-zA-Z]+[0-9]*: || "${NEWNAME}" =~ .*:.*:.* || "${NEWNAME} =~ ^:.* ]] ; then
+elif [[ "${NEWNAME}" =~ [a-zA-Z]+[0-9]*: || "${NEWNAME}" =~ .*:.*:.* || "${NEWNAME}" =~ ^:.* ]] ; then
     NEWNAME="${OLDNAME}"
-elif [[ ! "${NEWNAME}" =~ ^[0-9]+: ]] ; then
+elif [[ ! "${NEWNAME}" =~ ^[0-9]+:.* ]] ; then
     NEWNAME="${WSNUMBER}:${NEWNAME}"
 fi
 
