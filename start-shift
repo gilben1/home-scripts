@@ -4,23 +4,22 @@
 # Script by Nick Gilbert (nickgilbert2@gmail.com)
 # Use and modify as you will
 
-PS3='Choose which shift to begin: '
-options=("Tutor Shift" "Desk Shift" "No Shift")
-select opt in "${options[@]}"
-do
-    case $opt in
-        "Tutor Shift")
-            ~/.bin/scripts/shift-tutor
-            break
-            ;;
-        "Desk Shift")
-            ~/.bin/scripts/shift-desk
-            break
-            ;;
-        "No Shift")
-            break
-            ;;
-        *)
-            echo "Invalid option";;
-    esac
-done
+choices="Tutor Shift\nDeskShift\n"
+selection=$( echo -e "$choices" | rofi  -dmenu  \
+                                        -i \
+                                        -hide-scrollbar true \
+                                        -lines 2 \
+                                        -p "Choose shift")
+
+case $selection in
+    "Tutor Shift")
+        ~/.bin/scripts/shift-tutor
+        break
+        ;;
+    "Desk Shift")
+        ~/.bin/scripts/shift-desk
+        break
+        ;;
+    *)
+        echo "Invalid option";;
+esac
