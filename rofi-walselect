@@ -15,7 +15,7 @@ selection=$(echo -e "$choices" | rofi   -dmenu \
 if [ -z "$selection" ] ; then
     :
 elif [ -d "$dir/$selection" ] ; then
-    ~/.bin/scripts/walselect $dir/$selection
+    ~/.bin/scripts/rofi-walselect $dir/$selection
 elif [[ "$choices" != *"$selection"* ]] ; then
     :
 elif [[ "$selection" == "Random" ]] ; then

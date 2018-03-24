@@ -11,7 +11,7 @@
 # Then asks for a timing in minutes. Auto suggests some, any other whole number in minutes
 # Passes information as arguments to wal-timed
 
-if `ps -aux | pgrep 'wal-timed$' > /dev/null` ; then
+if `ps -aux | grep '^wal-timed$' > /dev/null` ; then
     choices="Yes\nNo"
     ans=$(echo -e "$choices" | rofi     -dmenu \
                                         -i \
@@ -24,8 +24,6 @@ if `ps -aux | pgrep 'wal-timed$' > /dev/null` ; then
         exit
     fi
 fi
-
-
 
 
 choices="Wallpapers"
