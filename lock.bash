@@ -27,13 +27,45 @@ scrot /tmp/screen.png
 convert /tmp/screen.png -scale 10% -scale 1000% /tmp/screen.png
 # Grabs a random icon from the folder ~/.lock_icons
 #icon=$(ls ~/.lock_icons | shuf -n 1)
+
+
+for XMOD in `seq 0 2`; do
+
+case $XMOD in
+    0)
+        ;&
+    2)
+        XFLIP="TRUE"
+        ;;
+    1)
+        XFLIP="FALSE"
+        ;;
+    
+esac
+
+for YMOD in `seq 0 2`; do
+
+BLANK="FILLED"
+
+case $YMOD in 
+    0)
+        ;&
+    2)
+        if [[ "$XFLIP" == "TRUE" ]] ; then
+            BLANK="BLANK"
+        fi
+        ;;
+esac
+
+
+
 icon=$(ls "$HOME/Pictures/Album Art/" | shuf -n 1)
 
 # Adds the path to it
 #icon="$HOME/.lock_icons/$icon"
 icon="$HOME/Pictures/Album Art/$icon"
 
-if [[ -f $icon ]]
+if [[ -f $icon ]] && [[ "$BLANK" != "BLANK" ]]
 then
     # placement x/y
     PX=0
@@ -51,13 +83,17 @@ then
         SRY=$(echo $RES | cut -d'x' -f 2 | cut -d'+' -f 1)  # y pos
         SROX=$(echo $RES | cut -d'x' -f 2 | cut -d'+' -f 2) # x offset
         SROY=$(echo $RES | cut -d'x' -f 2 | cut -d'+' -f 3) # y offset
-        PX=$(($SROX + $SRX/2 - $RX/2))
-        PY=$(($SROY + $SRY/2 - $RY/2))
+        PX=$(($SROX + $SRX/2 - $RX/2 + ($RX * $XMOD) - $RX))
+        PY=$(($SROY + $SRY/2 - $RY/2 + ($RY * $YMOD) - $RY))
 
         convert /tmp/screen.png "$icon" -geometry +$PX+$PY -composite -matte  /tmp/screen.png
         echo "done"
     done
 fi
+
+done
+
+done
 
 rectangles=" "
 SR=$(xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*')
