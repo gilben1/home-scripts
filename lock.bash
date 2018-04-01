@@ -28,6 +28,19 @@ convert /tmp/screen.png -scale 10% -scale 1000% /tmp/screen.png
 # Grabs a random icon from the folder ~/.lock_icons
 #icon=$(ls ~/.lock_icons | shuf -n 1)
 
+IFS=$'\n'
+set -o noglob
+
+icons=( $(ls "$HOME/Pictures/Album Art/" | shuf -n 5) )
+
+#shopt -u nullglob
+
+#for i in "${icons[@]}" ; do
+#    notify-send "$i"
+#done
+
+
+ICONINDEX=0
 
 for XMOD in `seq 0 2`; do
 
@@ -40,7 +53,6 @@ case $XMOD in
     1)
         XFLIP="FALSE"
         ;;
-    
 esac
 
 for YMOD in `seq 0 2`; do
@@ -53,16 +65,15 @@ case $YMOD in
     2)
         if [[ "$XFLIP" == "TRUE" ]] ; then
             BLANK="BLANK"
+            let "ICONINDEX -= 1"
         fi
         ;;
 esac
 
-
-
-icon=$(ls "$HOME/Pictures/Album Art/" | shuf -n 1)
+icon=${icons[$ICONINDEX]}
+let "ICONINDEX += 1"
 
 # Adds the path to it
-#icon="$HOME/.lock_icons/$icon"
 icon="$HOME/Pictures/Album Art/$icon"
 
 if [[ -f $icon ]] && [[ "$BLANK" != "BLANK" ]]
