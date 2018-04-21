@@ -7,3 +7,4 @@ sshfs_mount
 umount_sshfs
 wal-set
 i3ass/
+__*
