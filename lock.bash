@@ -32,7 +32,6 @@ IFS=$'\n'
 #set -o noglob
 
 icons=( $(ls "$HOME/Pictures/Album Art/" | shuf -n 5) )
-
 #set +o noglob
 #shopt -u nullglob
 
@@ -107,6 +106,8 @@ done
 
 done
 
+IFS=" "
+
 rectangles=" "
 SR=$(xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*')
 for RES in $SR; do
@@ -117,6 +118,7 @@ for RES in $SR; do
 done
 
 convert /tmp/screen.png -draw "fill black fill-opacity 0.4 $rectangles" /tmp/screen.png
+
 
 letterEnteredColor=${color4//#}ff
 letterRemovedColor=${color5//#}ff
