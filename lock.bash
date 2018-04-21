@@ -29,15 +29,8 @@ convert /tmp/screen.png -scale 10% -scale 1000% /tmp/screen.png
 #icon=$(ls ~/.lock_icons | shuf -n 1)
 
 IFS=$'\n'
-#set -o noglob
 
 icons=( $(ls "$HOME/Pictures/Album Art/" | shuf -n 5) )
-#set +o noglob
-#shopt -u nullglob
-
-#for i in "${icons[@]}" ; do
-#    notify-send "$i"
-#done
 
 
 ICONINDEX=0
