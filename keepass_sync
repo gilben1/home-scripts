@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd ~/gdrive/Other
+drive pull Nick2go.kdbx
+keepass2 Nick2go.kdbx
+drive push Nick2go.kdbx
